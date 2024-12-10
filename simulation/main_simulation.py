@@ -54,7 +54,7 @@ def control_traffic_lights_with_model(model, step, light_update_frequency):
     junctions = traci.trafficlight.getIDList()  # Get list of junctions in the network
     for junction in junctions:
         try:
-            # Get controlled links (edges) for the junction
+            
             controlled_links = traci.trafficlight.getControlledLinks(junction)
             edge_ids = [link[0][0].split('_')[0] for link in controlled_links]  # Extract edge IDs
 
@@ -66,37 +66,37 @@ def control_traffic_lights_with_model(model, step, light_update_frequency):
                 except Exception as e:
                     print(f"Error collecting data for edge '{edge}': {e}")
 
-            # Normalize data and prepare for prediction (padding for fixed input size)
+            
             normalized_data = [x / 20 for x in traffic_data] + [0] * (256 - len(traffic_data))
 
-            # Make a prediction every `light_update_frequency` steps
+           
             if step % light_update_frequency == 0:
                 light_prediction, volume_prediction = predict_traffic(model, normalized_data)
 
-                # Print traffic prediction for debugging purposes
+               
                 print(f"Junction {junction}: Light Prediction = {light_prediction:.2f}, Volume Prediction = {volume_prediction:.2f}")
 
-                # Classify traffic type based on volume prediction
+                
                 traffic_type = classify_traffic_type(volume_prediction)
                 print(f"Junction {junction}: Traffic Type = {traffic_type}")
 
-                # Dynamically adjust the Green light duration based on traffic volume
-                green_light_duration = 10  # Default duration for Green light
-                if volume_prediction > 20:  # Increase green duration for high traffic
+            
+                green_light_duration = 10 
+                if volume_prediction > 20:  
                     green_light_duration = 30
-                elif volume_prediction > 10:  # Medium traffic, moderate green duration
+                elif volume_prediction > 10:  
                     green_light_duration = 20
                 
-                # Set the traffic light phase based on the prediction (light state)
+                
                 light_state = "Green" if light_prediction > 0.1 else "Red"
                 current_phase = 0 if light_state == "Green" else 1
 
-                # Adjust phase duration based on traffic volume (Green light duration)
+               
                 if light_state == "Green":
-                    # Set Green light phase with the adjusted duration
+                    
                     traci.trafficlight.setPhaseDuration(junction, green_light_duration)
                 else:
-                    # Red light, set a standard shorter duration
+                    
                     traci.trafficlight.setPhaseDuration(junction, 5)
 
                 # Set the traffic light phase
@@ -105,7 +105,7 @@ def control_traffic_lights_with_model(model, step, light_update_frequency):
         except Exception as e:
             print(f"Error controlling traffic lights at junction {junction}: {e}")
 
-# Function to force exit remaining vehicles
+
 def force_exit_remaining_vehicles():
     remaining_vehicles = traci.vehicle.getIDList()
     for vehicle in remaining_vehicles:
@@ -114,7 +114,7 @@ def force_exit_remaining_vehicles():
 
 # Initialize SUMO simulation
 def initialize_simulation(config_file):
-    sumo_binary = "sumo-gui"  # Use "sumo-gui" for graphical interface
+    sumo_binary = "sumo-gui"  
     try:
         traci.start([sumo_binary, "-c", config_file])
         print("SUMO simulation started with GUI.")
@@ -126,19 +126,19 @@ def run_simulation_with_model(simulation_time, model, light_update_frequency):
     try:
         step = 0
         while step < simulation_time:
-            traci.simulationStep()  # Advance the simulation by one step
+            traci.simulationStep()  
             control_traffic_lights_with_model(model, step, light_update_frequency)  # Control traffic lights dynamically
-            time.sleep(0.01)  # Reduce sleep time for faster simulation execution
+            time.sleep(0.01)  
             step += 1
         
-        # Force exit remaining vehicles at the end of the simulation
+        
         force_exit_remaining_vehicles()
     except Exception as e:
         raise RuntimeError(f"Error during simulation: {e}")
     finally:
         print("Simulation completed.")
 
-# Stop the simulation
+
 def stop_simulation():
     try:
         traci.close()
@@ -148,15 +148,15 @@ def stop_simulation():
 
 # Main function
 def main():
-    config_file = r"C:\Users\madha\VisualStudio\Sumo_model\deployment_sumo\your_simulation.sumocfg"
-    model_path = r"C:\Users\madha\VisualStudio\Sumo_model\deployment_sumo\bilstm_traffic_model.pth"
+    config_file ="your_simulation.sumocfg"
+    model_path = "bilstm_traffic_model.pth"
     input_size = 256
     hidden_size = 128
     num_layers = 2
     light_output_size = 1
     volume_output_size = 1
-    simulation_time = 600 # Duration of the simulation (in seconds)
-    light_update_frequency = 5  # Update traffic lights every 5 steps
+    simulation_time = 600 
+    light_update_frequency = 5  
 
     try:
         # Load the BiLSTM model
@@ -170,7 +170,7 @@ def main():
     except Exception as e:
         print(f"Error in simulation: {e}")
     finally:
-        # Stop the simulation after completion
+       
         stop_simulation()
 
 if __name__ == "__main__":
