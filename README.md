@@ -25,3 +25,10 @@ This project leverages the power of **Bi-directional LSTM (Bi-LSTM)** to learn f
 - **Multi-Task Learning**: Simultaneously predicts both traffic light status and traffic volume using a single model.
 - **Bi-LSTM Architecture**: Captures both forward and backward dependencies in the time-series data.
 - **Real-time Traffic Predictions**: Can be used to predict traffic light status and vehicle count for real-time traffic management.
+
+## Video Demonstration
+
+You can view the video demonstration of the traffic management model by clicking the link below:
+
+[Watch the Demo Video](video.mp4)
+  
