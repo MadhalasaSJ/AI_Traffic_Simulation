@@ -2,7 +2,7 @@ import os
 import traci
 import sumolib
 
-# Define the path to your SUMO installation
+
 SUMO_HOME = os.environ.get('SUMO_HOME', r'')
 
 if not SUMO_HOME:
@@ -12,7 +12,7 @@ if not SUMO_HOME:
 sumo_config_file = "your_simulation.sumocfg"
 sumo_network_file = "network.net.xml"
 
-# Load the network file using sumolib
+
 def load_network():
     net = sumolib.net.readNet(sumo_network_file)
     print("Network loaded successfully.")
@@ -20,7 +20,7 @@ def load_network():
     print("Available edges:", [e.getID() for e in edges])
     return net
 
-# Start the SUMO simulation with the GUI
+
 def start_sumo_simulation():
     sumo_cmd = [os.path.join(SUMO_HOME, "bin", "sumo-gui"), "-c", sumo_config_file]
     try:
@@ -30,7 +30,7 @@ def start_sumo_simulation():
         print(f"Error starting SUMO simulation: {e}")
         exit(1)
 
-# Add vehicles to the simulation
+
 def add_vehicles():
     for i in range(10):
         vehicle_id = f"vehicle_{i}"
@@ -41,7 +41,7 @@ def add_vehicles():
         traci.vehicle.setTau(vehicle_id, 2.0)  # Set tau to 2.0 for each vehicle
         print(f"Vehicle {vehicle_id} added to route {route}.")
 
-# Run the simulation steps
+
 def run_simulation():
     step = 0
     while traci.simulation.getMinExpectedNumber() > 0:
