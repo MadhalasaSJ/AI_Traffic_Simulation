@@ -3,14 +3,14 @@ import traci
 import sumolib
 
 # Define the path to your SUMO installation
-SUMO_HOME = os.environ.get('SUMO_HOME', r'C:/Program Files (x86)/Eclipse/Sumo')
+SUMO_HOME = os.environ.get('SUMO_HOME', r'')
 
 if not SUMO_HOME:
     print("Please define the SUMO_HOME environment variable to point to your SUMO installation.")
     exit(1)
 
-sumo_config_file = r"C:\Users\madha\VisualStudio\Sumo_model\deployment_sumo\your_simulation.sumocfg"
-sumo_network_file = r"C:\Users\madha\VisualStudio\Sumo_model\deployment_sumo\network.net.xml"
+sumo_config_file = "your_simulation.sumocfg"
+sumo_network_file = "network.net.xml"
 
 # Load the network file using sumolib
 def load_network():
