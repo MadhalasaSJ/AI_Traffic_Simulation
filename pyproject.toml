@@ -1,0 +1,17 @@
+
+[tool.poetry]
+name = "Traffic_prediction_LSTM"
+version = "0.1.0"
+description = "A machine learning project for predicting traffic light signals and traffic volume using a Bi-Directional LSTM model."
+authors = ["Madhalasa S.J <madhalasasj1407@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+torch = "^1.9.0"  # Adjust based on the PyTorch version you are using
+numpy = "^1.21"
+scikit-learn = "^0.24"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
