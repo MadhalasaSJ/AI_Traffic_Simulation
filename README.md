@@ -1,11 +1,27 @@
-Traffic Prediction using Bi-Directional LSTM
+# Traffic Prediction using Bi-Directional LSTM
 
-This project aims to predict traffic conditions, specifically traffic light signals and traffic volume, using a Bi-directional Long Short-Term Memory (LSTM) model. It processes time-series traffic data and trains a multi-task learning model that predicts both traffic light status and volume.
+## Project Overview
 
-Project Overview
+This project aims to predict traffic conditions, specifically traffic light signals and traffic volume, using a **Bi-directional Long Short-Term Memory (LSTM)** model. It processes time-series traffic data and trains a multi-task learning model that predicts both traffic light status and traffic volume.
 
-Traffic prediction plays a significant role in traffic management systems, enabling better control of traffic flow and reducing congestion. This project leverages a Bi-directional LSTM model to predict two targets:
+## Objectives
 
-Traffic Light Status - Classification task predicting the current status of the traffic light.
-Traffic Volume - Regression task predicting the number of vehicles on the road.
-The project is designed to handle time-series data and includes custom dataset handling, model training, and performance evaluation.
+The goal of this project is to enhance traffic management systems by providing predictions that can optimize traffic control. The key tasks include:
+
+1. **Traffic Light Status**: A classification task that predicts the current status of the traffic light (e.g., red, yellow, green).
+2. **Traffic Volume**: A regression task that predicts the number of vehicles on the road.
+
+## Approach
+
+This project leverages the power of **Bi-directional LSTM (Bi-LSTM)** to learn from both past and future traffic data, enhancing the model's ability to capture patterns in traffic behavior. The tasks include:
+- **Data Collection**: Gathering time-series traffic data with relevant features (e.g., timestamps, traffic light status, vehicle count).
+- **Data Preprocessing**: Handling missing data, scaling, and transforming the dataset into a suitable format for training.
+- **Model Development**: Building a Bi-directional LSTM model with two output layers for classification (traffic light status) and regression (traffic volume).
+- **Model Training**: Training the Bi-LSTM model with appropriate loss functions for both tasks.
+- **Evaluation**: Evaluating the model's performance using metrics such as accuracy (for classification) and mean squared error (for regression).
+
+## Features
+
+- **Multi-Task Learning**: Simultaneously predicts both traffic light status and traffic volume using a single model.
+- **Bi-LSTM Architecture**: Captures both forward and backward dependencies in the time-series data.
+- **Real-time Traffic Predictions**: Can be used to predict traffic light status and vehicle count for real-time traffic management.
