@@ -22,13 +22,13 @@ class BiLSTMModel(nn.Module):
         # Take the last time step's output
         lstm_out = lstm_out[:, -1, :]
         
-        # Pass through fully connected layers
+       
         light_output = torch.sigmoid(self.fc_light(lstm_out))  # Sigmoid activation for binary classification
         volume_output = torch.relu(self.fc_volume(lstm_out))  # ReLU for continuous non-negative volume output
         
         return light_output, volume_output
 
-# Generate Dummy Dataset
+
 def create_dummy_dataset(num_samples, sequence_length, input_size):
     X = torch.randn(num_samples, sequence_length, input_size)  # Random input features
     y_light = torch.randint(0, 2, (num_samples, 1)).float()  # Binary output for traffic light (0 or 1)
@@ -82,7 +82,7 @@ if __name__ == "__main__":
                         num_layers=num_layers, light_output_size=light_output_size, 
                         volume_output_size=volume_output_size)
 
-    # Create dataset and dataloader
+    
     dataset = create_dummy_dataset(num_samples, sequence_length, input_size)
     dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
