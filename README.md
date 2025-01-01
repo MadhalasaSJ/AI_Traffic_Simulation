@@ -1,5 +1,23 @@
 # Traffic Prediction using Bi-Directional LSTM
 
+# AI Traffic Simulation
+
+This repository showcases my work on an **AI Traffic Simulation** project as part of an **Omdena** collaboration. The project focused on using AI to optimize urban traffic management.
+
+## My Role
+- Developed a traffic prediction model using LSTM networks.
+- Led Task-3: Traffic Control Algorithm Model Development.
+- Conducted daily stand-ups and managed progress using a sprint methodology.
+
+## Certificate of Completion
+![Omdena Certificate](assets/omdena_certificate.png)
+
+You can download the certificate [here](assets/omdena_certificate.pdf).
+
+## About Omdena
+[Omdena](https://omdena.com) is a global platform where AI practitioners collaborate to solve real-world challenges.
+
+
 ## Project Overview
 
 This project aims to predict traffic conditions, specifically traffic light signals and traffic volume, using a **Bi-directional Long Short-Term Memory (LSTM)** model. It processes time-series traffic data and trains a multi-task learning model that predicts both traffic light status and traffic volume.
