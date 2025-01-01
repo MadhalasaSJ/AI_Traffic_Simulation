@@ -10,9 +10,9 @@ This repository showcases my work on an **AI Traffic Simulation** project as par
 - Conducted daily stand-ups and managed progress using a sprint methodology.
 
 ## Certificate of Completion
-![Omdena Certificate](assets/omdena_certificate.png)
+![Omdena Certificate](assets/Omdena Certificate.png)
 
-You can download the certificate [here](assets/omdena_certificate.pdf).
+You can download the certificate [here](assets/Omdena Certificate.pdf).
 
 ## About Omdena
 [Omdena](https://omdena.com) is a global platform where AI practitioners collaborate to solve real-world challenges.
