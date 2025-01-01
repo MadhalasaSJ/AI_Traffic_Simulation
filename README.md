@@ -30,5 +30,8 @@ This project leverages the power of **Bi-directional LSTM (Bi-LSTM)** to learn f
 
 You can view the video demonstration of the traffic management model by clicking the link below:
 
-[![Watch the video](assets/Ai_traffic_simulation.webp)](assets/AI-Traffic_Management_video_sumo.mp4)
+<video width="600" controls>
+  <source src="assets/AI-Traffic_Management_video_sumo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
   
